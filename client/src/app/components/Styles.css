@@ -1,0 +1,37 @@
+/* Navbar */
+nav {
+  position: absolute;
+  top: 10px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Emotion Analysis input */
+#Home {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  #input_text {
+    border-radius: 10px;
+    padding: 2 0px 20px;
+    outline: none;
+    height: 200px;
+    width: 800px;
+  }
+  #input_text:focus {
+    outline: none;
+  }
+  #analyse {
+    background-color: red;
+    outline: none;
+    width: 800px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+  }
+}
