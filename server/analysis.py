@@ -8,9 +8,7 @@ CORS(app)
 def analyze():
     if request.method == "POST":
         text = request.form.get("text_analyze")
-        return text
-    else:
-        return "Empty"
+        return "empty"
 
 
 if __name__ == "__main__":
