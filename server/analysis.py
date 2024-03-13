@@ -6,9 +6,16 @@ CORS(app)
 
 @app.route("/process", methods=["POST","GET"])
 def analyze():
+    print(request)
+    body=request.get_json(force=True)
     if request.method == "POST":
-        text = request.form.get("text_analyze")
-        return "empty"
+        text = body['text_analyze']
+        print(text)
+        return text,200
+    elif request.method=="GET":
+        return "got ",400
+    else:
+        return "SERVER DIES", 400
 
 
 if __name__ == "__main__":
