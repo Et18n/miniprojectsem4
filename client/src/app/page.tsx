@@ -18,7 +18,12 @@ export default function Home() {
         text_analyze: text,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((data) => {
         console.log(data);
         setResult(data);
@@ -27,7 +32,6 @@ export default function Home() {
         console.error("Error:", error);
       });
   }
-
   return (
     <div id="Home">
       <Nav />
