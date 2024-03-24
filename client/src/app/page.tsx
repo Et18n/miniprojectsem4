@@ -3,7 +3,7 @@ import Nav from "./components/Nav";
 import React, { useEffect, useState } from "react";
 import "@/app/components/Styles.css";
 export default function Home() {
-  const [result, setResult] = useState("Loading");
+  const [result, setResult] = useState("");
   const [text, setText] = useState("");
 
   function fetchData() {
@@ -19,7 +19,10 @@ export default function Home() {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        setResult(data);
+      })
       .catch((error) => {
         console.error("Error:", error);
       });

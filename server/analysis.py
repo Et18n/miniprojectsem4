@@ -5,7 +5,7 @@ from flask_cors import CORS
 import string
 from collections import Counter
 
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from nltk.corpus import stopwords
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.stem import WordNetLemmatizer
@@ -15,17 +15,13 @@ from nltk.tokenize import word_tokenize
 app = Flask(__name__)
 
 
-CORS(app, origins="http://localhost:3000")
+CORS(app, origins=["http://localhost:3000","https://miniprojectsem4-3ljc.vercel.app"])
 
 
 @app.route("/process", methods=["POST", "GET"])
 
 
-# fig, ax1 = plt.subplots()
-# ax1.bar(w.keys(), w.values())
-# fig.autofmt_xdate()
-# plt.savefig('graph.png')
-# plt.show()
+
 
 
 def analyze():
@@ -82,6 +78,12 @@ def alive(text):
         w = Counter(emotion_list)
         print(w)
 
+        fig, ax1 = plt.subplots()
+        ax1.bar(w.keys(), w.values())
+        fig.autofmt_xdate()
+        # plt.savefig('graph.png')
+        
+
         def sentiment_analyse(sentiment_text):
             score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
             if score["neg"] > score["pos"]:
@@ -92,6 +94,7 @@ def alive(text):
                 return "Neutral"
 
         weewoo=sentiment_analyse(cleaned_text)
+        plt.show()
         return weewoo
 
 
