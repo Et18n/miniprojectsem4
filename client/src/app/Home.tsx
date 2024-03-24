@@ -1,14 +1,16 @@
 "use client";
 import Nav from "./components/Nav";
-import React, { useEffect, useState } from "react";
-import "@/app/components/Styles.css";
-export default function Home() {
-  const [result, setResult] = useState("Loading");
-  const [text, setText] = useState("");
+import React, { useState } from "react";
 
-  function fetchData() {
-    // console.log(JSON.stringify({ text_analyze: text }));
-    const idk = fetch("http://localhost:8080/process", {
+export default function Home() {
+  let [result, setResult] = useState("No");
+  const [text, setText] = useState(
+    "THIS IS A TEST SCRIPT: IF NOT RUN RETURN THIS VALUE"
+  );
+
+  async function fetchData() {
+    console.log(JSON.stringify({ text_analyze: text }));
+    const idk = await fetch("http://127.0.0.1:8080/process", {
       method: "POST",
       // mode: "no-cors",
       headers: {
@@ -19,7 +21,10 @@ export default function Home() {
       }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        setResult(data);
+      })
       .catch((error) => {
         console.error("Error:", error);
       });
@@ -37,7 +42,7 @@ export default function Home() {
       <button id="analyse" onClick={fetchData}>
         Analyse text
       </button>
-      <div id="result">{result}</div>
+      <div id="result">No</div>
     </div>
   );
 }

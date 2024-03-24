@@ -7,6 +7,9 @@
   box-sizing: border-box;
 }
 body {
-  background-color: black;
+  /* background-color: black; */
   font-family: "Inter";
+}
+#result {
+  color: red;
 }
